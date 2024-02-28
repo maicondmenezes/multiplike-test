@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "multiplike-test"
+version = "0.1.0"
+description = ""
+authors = ["Maicon de Menezes <maicondmenezes@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.2"
+djangorestframework = "^3.14.0"
+django-rest-swagger = "^2.2.0"
+markdown = "^3.5.2"
+pyyaml = "^6.0.1"
+uritemplate = "^4.1.1"
+pygments = "^2.17.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.2"
+pytest-cov = "^4.1.0"
+blue = "^0.9.1"
+isort = "^5.13.2"
+taskipy = "^1.12.2"
+ipython = "^8.22.1"
+ipykernel = "^6.29.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.taskipy.tasks]
+lint-review = "blue --check --diff . && isort --check --diff ."
+lint = "blue . && isort ."
+pre_test = "task lint"
+test = "pytest -s -x --cov=kami_pricing -vv -rs"
+post_test = "coverage html"
+docs = "mkdocs serve"
