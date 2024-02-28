@@ -33,6 +33,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #Local
+    'data_provider',
+    #3rd Part Apps
+    'rest_framework',
+    #Standard Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
